@@ -19,6 +19,7 @@ function createTable(data) {
         <td>${data[i].place}</td>
         </tr>`
         table.innerHTML += row;
+
     }
 }
 

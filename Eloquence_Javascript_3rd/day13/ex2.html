@@ -1,0 +1,38 @@
+<!doctype html>
+
+<style>
+    .trail {
+        /* className for the trail elements */
+        position: absolute;
+        height: 6px;
+        width: 6px;
+        border-radius: 3px;
+        background: teal;
+    }
+    
+    body {
+        height: 300px;
+    }
+</style>
+
+<body>
+
+
+    <script>
+        // Your code here
+        let snake = [];
+        for (let i = 0; i < 11; i++) {
+            let node = document.createElement("div");
+            node.className = "trail";
+            document.body.appendChild(node);
+            snake.push(node);
+        }
+        let babySnake = 0;
+        window.addEventListener("mousemove", function(event) {
+            let startSnake = snake[babySnake];
+            startSnake.style.left = (event.pageX - 3) + "px";
+            startSnake.style.top = (event.pageY - 3) + "px";
+            babySnake = (babySnake + 1) % snake.length;
+        })
+    </script>
+</body>
