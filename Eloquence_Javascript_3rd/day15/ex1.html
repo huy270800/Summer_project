@@ -1,0 +1,73 @@
+<canvas id="myCanvas" width="1200" height="600" style="border:1px solid #000000;">
+</canvas>
+<script>
+    var canvas = document.getElementById("myCanvas");
+    var ctx = canvas.getContext("2d");
+    ctx.fillStyle = "lightyellow";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    //instead of do it manually by typing each commands we can automate it by writing function 
+    function trapezoid(x, y) {
+        ctx.beginPath();
+        ctx.moveTo(x, y);
+        ctx.lineTo(x + 40, y);
+        ctx.lineTo(x + 80, y + 50);
+        ctx.lineTo(x - 30, y + 50);
+        ctx.closePath();
+        ctx.stroke();
+    }
+    trapezoid(40, 10);
+
+    function diamond(x, y) {
+        ctx.beginPath();
+        ctx.translate(x + 30, y + 30);
+        ctx.rotate(Math.PI / 4);
+        ctx.fillStyle = "red";
+        ctx.fillRect(x, y, x + 60, y + 60);
+        ctx.stroke();
+    }
+    diamond(70, 30);
+
+    function zigzag(x, y) {
+        ctx.beginPath();
+        ctx.moveTo(x, y);
+        for (let i = 0; i < 8; i++) {
+            ctx.lineTo(x + 80, y + i * 8 + 8);
+            ctx.lineTo(x, y + i * 8 + 4);
+        }
+        ctx.stroke();
+    }
+    zigzag(240, 20);
+
+    function spiral(x, y) {
+        let radius = 50,
+            xCenter = x + radius,
+            yCenter = y + radius;
+        ctx.beginPath();
+        ctx.moveTo(xCenter, yCenter);
+        for (let i = 0; i < 300; i++) {
+            let angle = i * Math.PI / 30;
+            let dist = radius * i / 300;
+            ctx.lineTo(xCenter + Math.cos(angle) * dist,
+                yCenter + Math.sin(angle) * dist);
+        }
+        ctx.stroke();
+    }
+    spiral(340, 20);
+
+    function star(x, y) {
+        let radius = 50,
+            xCenter = x + radius,
+            yCenter = y + radius;
+        ctx.beginPath();
+        ctx.moveTo(xCenter + radius, yCenter);
+        for (let i = 1; i <= 8; i++) {
+            let angle = i * Math.PI / 4;
+            ctx.quadraticCurveTo(xCenter, yCenter,
+                xCenter + Math.cos(angle) * radius,
+                yCenter + Math.sin(angle) * radius);
+        }
+        ctx.fillStyle = "gold";
+        ctx.fill();
+    }
+    star(440, 20);
+</script>
