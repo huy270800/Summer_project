@@ -1,0 +1,40 @@
+<!doctype html>
+
+<canvas width="400" height="400"></canvas>
+<script>
+    let ctx = document.querySelector("canvas").getContext("2d");
+
+    let lastTime = null;
+
+    function frame(time) {
+        if (lastTime != null) {
+            updateAnimation(Math.min(100, time - lastTime) / 1000);
+        }
+        lastTime = time;
+        requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+    //init x , y value 
+    let x = 150;
+    let y = 350;
+    //init ball's speed and radius 
+    let radius = 12;
+    let speedX = 110;
+    speedY = 70
+
+    function updateAnimation(step) {
+        // Your code here.
+        ctx.clearRect(0, 0, 400, 400);
+        ctx.strokeStyle = "blue";
+        ctx.strokeRect(50, 50, 350, 350);
+
+        x += step * speedX;
+        y += step * speedY;
+        if (x < 50 + radius || x > 400 - radius) speedX = -speedX;
+        if (y < 50 + radius || y > 400 - radius) speedY = -speedY;
+        ctx.fillStyle = "black";
+        ctx.beginPath();
+        ctx.arc(x, y, radius, 0, 7);
+        ctx.fill();
+    }
+</script>
