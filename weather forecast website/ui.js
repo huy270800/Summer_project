@@ -16,10 +16,10 @@ class UI {
         this.location.textContent = weather.location.name;
         this.desc.textContent = weather.current.condition.text;
         this.icon.setAttribute('src', weather.current.condition.icon)
-        this.string.textContent = weather.current.temp_c + "°C";
+        this.string.textContent = weather.current.temp_c + "°C" + ` (${weather.current.temp_f}) °F `;
         this.humidity.textContent = `Relative humidity: ${weather.current.humidity} %  `;
-        this.feelslike.textContent = `Feels like: ${weather.current.feelslike_c} °C`;
-        this.pressure.textContent = `Pressure: ${weather.current.pressure_in}`;
+        this.feelslike.textContent = `Feels like: ${weather.current.feelslike_c} °C (${weather.current.feelslike_f}) °F`;
+        this.pressure.textContent = `Pressure: ${weather.current.pressure_in} in`;
         this.wind.textContent = `Wind:  ${weather.current.wind_mph} m/s`;
 
     }
