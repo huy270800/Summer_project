@@ -1,6 +1,6 @@
 class Weather {
     constructor(city, state) {
-            this.apiKey = ' c834c5c16a5640bea04124339201608'
+            this.apiKey = 'c834c5c16a5640bea04124339201608'
             this.city = city;
             this.state = state;
         }
@@ -12,7 +12,7 @@ class Weather {
         const responseData = await response.json();
         return responseData
     }
-    changeLocation() {
+    changeLocation(city, state) {
         this.city = city;
         this.state = state;
     }
