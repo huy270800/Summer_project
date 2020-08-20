@@ -22,13 +22,10 @@ document.getElementById('w-change-btn').addEventListener('click', (e) => {
     //Set location
     storage.setLocationData(city, state);
 
-
     //get and display weather
-
     getWeather();
 
     //Close Modal
-
     $('#locModal').modal('hide');
 
 
@@ -39,7 +36,6 @@ function getWeather() {
     weather.getWeather()
         .then(results => {
             ui.paint(results);
-            console.log(results);
 
         })
         .catch(err => console.log(err));
